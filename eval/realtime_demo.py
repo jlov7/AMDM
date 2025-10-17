@@ -260,9 +260,14 @@ def run_demo(args: argparse.Namespace):
         if args.include_features:
             turn_payload["features"] = {col: row.get(col, 0.0) for col in feature_columns}
         if args.include_raw:
+            raw_copy = record.copy()
+            if args.redact_raw:
+                for field in ("goal_text", "plan_text", "action_text"):
+                    if field in raw_copy:
+                        raw_copy[field] = "[REDACTED]"
             turn_payload["raw"] = {
                 key: (value.isoformat() if isinstance(value, pd.Timestamp) else value)
-                for key, value in record.items()
+                for key, value in raw_copy.items()
             }
 
         if sink:
@@ -270,22 +275,21 @@ def run_demo(args: argparse.Namespace):
             sink.flush()
 
         event_names = [payload["detector"] for payload in emitted_payloads]
+
         if args.summary or args.summary_only:
             summary = (
                 f"[summary] agent={agent_id} turn={turn_id} score={state.last_score:.2f} "
                 f"events={event_names}"
             )
-            print(summary)
-            if args.summary_only:
-                time.sleep(args.sleep)
-                events_since_persist += 1
-                persist_state()
-                return
+            print(summary, file=sys.stderr)
 
-        if args.json_only:
+        emit_json = args.json_only and not args.summary_only
+        emit_table = not args.json_only and not args.summary_only
+
+        if emit_json:
             serialized = json.dumps(turn_payload, indent=2 if args.json_pretty else None)
             print(serialized)
-        else:
+        if emit_table:
             event_name = ", ".join(ev.detector for ev in events_emitted) or "-"
             detail = events_emitted[0].message if events_emitted else ""
             table = Table(title="AMDM Realtime Demo")
@@ -422,6 +426,11 @@ def parse_args(argv: Iterable[str]) -> argparse.Namespace:
         "--include-raw",
         action="store_true",
         help="Include raw normalized event payload in JSON output.",
+    )
+    parser.add_argument(
+        "--redact-raw",
+        action="store_true",
+        help="Redact goal/plan/action fields when including raw payloads.",
     )
     parser.add_argument(
         "--summary",

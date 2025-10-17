@@ -50,10 +50,11 @@ Export GenAI spans via OTLP -> JSONL using `otlp-exporter` or a collector pipeli
 - `eval/realtime_demo.py` streams anomalies with a stable AMDM score, adaptive threshold, optional follow mode, Prometheus/OTel metric sinks, and evaluation latencies/false-positive rates in the generated report.
 
 Flags of note for `eval/realtime_demo.py`:
-- `--json-only` emits per-turn NDJSON (with `events`, optional `features`, and `raw` payloads); layer `--json-pretty`, `--include-features`, `--include-raw`, and `--summary`/`--summary-only` for richer pipelines.
+- `--json-only` emits per-turn NDJSON (with `events`, optional `features`, and `raw` payloads); layer `--json-pretty`, `--include-features`, `--include-raw`, and `--summary`/`--summary-only` for richer pipelines (summary lines go to stderr).
 - `--state` / `--state-interval` persist monitor baselines without replaying the entire stream.
 - `--no-metrics` disables Prometheus/OTEL sinks when you only need CLI output.
 - `--json-schema` prints the turn payload schema and exits.
+- `--redact-raw` masks goal/plan/action fields when including raw payloads.
 
 ## Intended Use
 This repository targets research and operational experimentation. It is not optimized for commercial deployment and comes with no service-level guarantees.
