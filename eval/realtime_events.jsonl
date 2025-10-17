@@ -1,0 +1,4 @@
+{"detector": "goal_drift", "turn_id": 3, "score": 3.3069175663736083, "threshold": 2.4, "severity": "high", "message": "Goal drift suspected: AMDM score 3.31, plan-action delta 0.82 over 1 turns.", "agent_id": "agent-1"}
+{"detector": "tool_error_burst", "turn_id": 3, "score": 3.3069175663736083, "threshold": 2.4, "severity": "medium", "message": "Tool error burst: rate 0.40 exceeds threshold 0.05 for 2 turns.", "agent_id": "agent-1"}
+{"detector": "goal_drift", "turn_id": 4, "score": 4.034190395779925, "threshold": 2.4, "severity": "high", "message": "Goal drift suspected: AMDM score 4.03, plan-action delta 0.79 over 1 turns.", "agent_id": "agent-1"}
+{"detector": "tool_error_burst", "turn_id": 4, "score": 4.034190395779925, "threshold": 2.4, "severity": "medium", "message": "Tool error burst continuing: rate 0.50 above baseline threshold 0.05.", "agent_id": "agent-1"}

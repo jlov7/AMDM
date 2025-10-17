@@ -1,0 +1,24 @@
+scenarios:
+  - name: baseline_goal_drift
+    seed: 42
+    turns: 60
+    agents: 2
+    goal_drift_turns: [15, 16, 17, 35]
+    tool_error_bursts: [[25, 28]]
+    latency_spikes: [45]
+
+  - name: bursty_tool_errors
+    seed: 123
+    turns: 80
+    agents: 1
+    goal_drift_turns: []
+    tool_error_bursts: [[20, 25], [50, 55]]
+    latency_spikes: []
+
+  - name: latency_cost_spike
+    seed: 99
+    turns: 50
+    agents: 1
+    goal_drift_turns: [30]
+    tool_error_bursts: []
+    latency_spikes: [10, 11, 12, 35]

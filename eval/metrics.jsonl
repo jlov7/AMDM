@@ -1,0 +1,10 @@
+{"resource": {"amdm.agent_id": "agent-1"}, "metric": "amdm.score", "score": 0.0, "threshold": 2.4, "is_alerting": false}
+{"resource": {"amdm.agent_id": "agent-1"}, "metric": "amdm.score", "score": 3.311509733466655, "threshold": 2.4, "is_alerting": true}
+{"resource": {"amdm.agent_id": "agent-1"}, "metric": "amdm.score", "score": 3.3213038375947646, "threshold": 2.4, "is_alerting": true}
+{"resource": {"amdm.agent_id": "agent-1"}, "metric": "amdm.score", "score": 3.3069175663736083, "threshold": 2.4, "is_alerting": true}
+{"resource": {"amdm.agent_id": "agent-1"}, "metric": "amdm.detector_event", "detector": "goal_drift", "severity": "high", "score": 3.3069175663736083}
+{"resource": {"amdm.agent_id": "agent-1"}, "metric": "amdm.detector_event", "detector": "tool_error_burst", "severity": "medium", "score": 3.3069175663736083}
+{"resource": {"amdm.agent_id": "agent-1"}, "metric": "amdm.score", "score": 4.034190395779925, "threshold": 2.4, "is_alerting": true}
+{"resource": {"amdm.agent_id": "agent-1"}, "metric": "amdm.detector_event", "detector": "goal_drift", "severity": "high", "score": 4.034190395779925}
+{"resource": {"amdm.agent_id": "agent-1"}, "metric": "amdm.detector_event", "detector": "tool_error_burst", "severity": "medium", "score": 4.034190395779925}
+{"resource": {"amdm.agent_id": "agent-1"}, "metric": "amdm.detector_event", "detector": "cost_latency_spike", "severity": "medium", "score": 4.034190395779925}
