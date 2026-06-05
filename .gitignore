@@ -58,3 +58,5 @@ eval/*.png
 eval/eval_report.md
 eval/*.csv
 examples/sample_traces/*.generated.jsonl
+
+.specstory/
